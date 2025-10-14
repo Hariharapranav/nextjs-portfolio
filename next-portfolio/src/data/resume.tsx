@@ -81,7 +81,7 @@ export const DATA = {
       href: "http://www.edsols.in/",
       badges: [],
       location: "On-Site",
-      title: "FullStack Developer Intern",
+      title: "Junior FullStack Developer",
       logoUrl: "/edsols.png",
       start: "Nov 2024",
       end: "Present",
