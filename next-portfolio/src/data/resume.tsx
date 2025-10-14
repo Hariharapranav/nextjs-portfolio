@@ -11,7 +11,7 @@ export const DATA = {
     "Software Engineer | Passionate about building impactful solutions and empowering others through technology.",
   summary:
     "In 2023, I earned my degree in Computer Science and Engineering from Bannari Amman Institute of Technology. As a full-stack developer, I specialize in React.js, Next.js, and Flutter, with experience hosting projects on AWS EC2. Passionate about building impactful web and mobile applications, I also share insights and knowledge through platforms like Instagram and Medium.",
-  avatarUrl: "/me.png",
+  avatarUrl: "/me.jpg",
   skills: [
     "ReactJs",
     "Next.js",
@@ -28,7 +28,7 @@ export const DATA = {
     "CSS",
     "JavaScript",
     "C Programming",
-    "C++",      
+    "C++",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -61,7 +61,7 @@ export const DATA = {
       },
       Youtube: {
         name: "Youtube",
-        url: "https://www.youtube.com/@DevOrbitbiz",
+        url: "https://www.youtube.com/@iPranav143",
         icon: Icons.youtube,
         navbar: true,
       },
@@ -152,7 +152,7 @@ export const DATA = {
         "JavaScript",
         "TailwindCSS",
         "Giphy API",
-        "Vercel"
+        "Vercel",
       ],
       links: [
         {
@@ -181,7 +181,7 @@ export const DATA = {
         "Typescript",
         "TailwindCSS",
         "TMDB API",
-        "Firebase"
+        "Firebase",
       ],
       links: [
         {
@@ -200,12 +200,7 @@ export const DATA = {
       active: true,
       description:
         "Pinterest clone using React.js, allowing users to explore and organize visually appealing content. The project features a responsive design, dynamic content rendering, and seamless user interactions, replicating the core functionality of Pinterest.",
-      technologies: [
-        "Reactjs",
-        "JavaScript",
-        "TailwindCSS",
-        "Firebase"
-      ],
+      technologies: ["Reactjs", "JavaScript", "TailwindCSS", "Firebase"],
       links: [
         {
           type: "Website",
@@ -228,13 +223,7 @@ export const DATA = {
       active: true,
       description:
         "I created a virtual environment website using A-Frame technology, enabling users to explore places in an immersive virtual setting. The platform supports VR headsets for a fully interactive experience, providing a seamless way to navigate and engage with 3D environments.",
-      technologies: [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "AFrame",
-        "Github Hosting"
-      ],
+      technologies: ["HTML", "CSS", "JavaScript", "AFrame", "Github Hosting"],
       links: [
         {
           type: "Website",
