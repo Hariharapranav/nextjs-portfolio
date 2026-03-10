@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Java Full Stack Developer | Crafting end-to-end systems with Spring Boot on the backend and React on the frontend.",
   summary:
-    "In 2023, I earned my degree in Computer Science and Engineering from Bannari Amman Institute of Technology. I'm a Java Full Stack Developer who builds complete, production-ready systems — Spring Boot 3 & Spring Security on the backend, React & Next.js on the frontend. I specialise in enterprise-grade features like multi-step workflow engines, Kafka-powered event pipelines, JWT security, and real-time dashboards. Passionate about clean architecture, security-first design, and shipping software that actually works at scale.",
+    "Java Full Stack Developer with a CS degree from [Bannari Amman Institute of Technology](https://www.bitsathy.ac.in/) ('23). I build end-to-end systems with **Spring Boot 3** and **React/Next.js** — from workflow engines and Kafka pipelines to real-time dashboards. Clean code, secure by default, built to scale.",
   avatarUrl: "/me.jpg",
   skills: [
     "Java",
@@ -171,7 +171,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "/admin-view.png",
       video: "",
     },
     {
@@ -199,7 +199,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "/block.png",
       video: "",
     },
     {
