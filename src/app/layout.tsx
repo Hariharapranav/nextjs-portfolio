@@ -68,7 +68,7 @@ export default function RootLayout({
           fontDisplay.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {/* Artistic Background Layer */}
           <div className="fixed inset-0 -z-10 pointer-events-none select-none overflow-hidden transition-opacity duration-500">
             {/* Main Base Colors for Light/Dark */}
