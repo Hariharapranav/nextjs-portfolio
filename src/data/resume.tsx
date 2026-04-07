@@ -82,7 +82,7 @@ export const DATA = {
 
   work: [
     {
-      company: "Edsols",
+      company: "Edsols Innovations",
       href: "http://www.edsols.in/",
       badges: [],
       location: "On-Site",

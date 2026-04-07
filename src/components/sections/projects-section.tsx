@@ -2,85 +2,108 @@
 
 import React, { useState } from "react";
 import BlurFade from "@/components/magicui/blur-fade";
-import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const BLUR_FADE_DELAY = 0.04;
-const INITIAL_COUNT = 4;
+const INITIAL_COUNT = 2;
 
 export function ProjectsSection() {
-    const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
-    const visibleProjects = showAll
-        ? DATA.projects
-        : DATA.projects.slice(0, INITIAL_COUNT);
+  const visibleProjects = showAll
+    ? DATA.projects
+    : DATA.projects.slice(0, INITIAL_COUNT);
 
-    const hasMore = DATA.projects.length > INITIAL_COUNT;
+  const hasMore = DATA.projects.length > INITIAL_COUNT;
 
-    return (
-        <section id="projects">
-            <div className="space-y-12 w-full py-12">
-                <BlurFade delay={BLUR_FADE_DELAY * 11}>
-                    <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                        <div className="space-y-2">
-                            <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                                My Projects
-                            </div>
-                            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                                Check out my latest work
-                            </h2>
-                            <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                I&apos;ve worked on a variety of projects, from simple websites
-                                to complex web applications. Here are a few of my favorites.
-                            </p>
-                        </div>
-                    </div>
-                </BlurFade>
+  return (
+    <section id="projects" className="py-8 border-t border-border/40">
+      {/* Section header */}
+      <BlurFade delay={BLUR_FADE_DELAY * 11}>
+        <div className="flex items-center justify-between mb-8">
+          <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted-foreground">
+            Current Projects
+          </span>
+          <Link
+            href="/projects"
+            className="text-[10px] font-sans font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
+          >
+            All Works →
+          </Link>
+        </div>
+      </BlurFade>
 
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-                    {visibleProjects.map((project, id) => (
-                        <BlurFade
-                            key={project.title}
-                            delay={BLUR_FADE_DELAY * 12 + id * 0.05}
-                        >
-                            <ProjectCard
-                                href={project.href}
-                                title={project.title}
-                                description={project.description}
-                                dates={project.dates}
-                                tags={project.technologies}
-                                image={project.image}
-                                video={project.video}
-                                links={project.links}
-                            />
-                        </BlurFade>
-                    ))}
-                </div>
-
-                {hasMore && (
-                    <BlurFade delay={BLUR_FADE_DELAY * 13}>
-                        <div className="flex justify-center">
-                            <button
-                                onClick={() => setShowAll((prev) => !prev)}
-                                className="group flex items-center gap-2 rounded-full border border-input bg-background px-5 py-2 text-sm font-medium text-muted-foreground shadow-sm transition-all duration-300 hover:border-foreground hover:text-foreground hover:shadow-md"
-                            >
-                                {showAll ? (
-                                    <>
-                                        Show less
-                                        <ChevronUp className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
-                                    </>
-                                ) : (
-                                    <>
-                                        Show {DATA.projects.length - INITIAL_COUNT} more projects
-                                        <ChevronDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
-                                    </>
-                                )}
-                            </button>
-                        </div>
-                    </BlurFade>
+      {/* Project cards — 2-column grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
+        {visibleProjects.map((project, id) => (
+          <BlurFade
+            key={project.title}
+            delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+          >
+            <Link
+              href={project.href || "#"}
+              target="_blank"
+              rel="noreferrer"
+              className="group block"
+            >
+              {/* Thumbnail */}
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-border/50 bg-secondary/30 mb-5 shadow-sm transition-shadow hover:shadow-md">
+                <span className="absolute top-3 right-3 z-10 bg-black/80 dark:bg-white/80 backdrop-blur-md text-white dark:text-black text-[9px] font-sans font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  {id === 0 ? "Featured" : "New"}
+                </span>
+                
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-3xl">🚀</span>
+                  </div>
                 )}
-            </div>
-        </section>
-    );
+              </div>
+
+              {/* Title — Elegant & Large */}
+              <h3
+                className="font-display font-light text-foreground group-hover:text-accent transition-colors mb-2"
+                style={{ fontSize: "22px", lineHeight: "1.2", fontWeight: 300 }}
+              >
+                {project.title}
+              </h3>
+              <p className="text-sm font-sans text-muted-foreground/80 leading-relaxed line-clamp-2">
+                {project.description}
+              </p>
+            </Link>
+          </BlurFade>
+        ))}
+      </div>
+
+      {/* {hasMore && (
+        <BlurFade delay={BLUR_FADE_DELAY * 13}>
+          <button
+            onClick={() => setShowAll((prev) => !prev)}
+            className="mt-4 text-xs font-sans text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {showAll
+              ? "← Show less"
+              : `+ Show ${DATA.projects.length - INITIAL_COUNT} more projects`}
+          </button>
+        </BlurFade>
+      )} */}
+    </section>
+  );
 }

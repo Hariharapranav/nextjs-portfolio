@@ -1,76 +1,65 @@
-import { Dock, DockIcon } from "@/components/magicui/dock";
-import { ModeToggle } from "@/components/mode-toggle";
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { DATA } from "@/data/resume";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { DATA } from "@/data/resume";
+import Image from "next/image";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Navbar() {
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
-      <div className="fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
-      <Dock className="z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] ">
-        {DATA.navbar.map((item) => (
-          <DockIcon key={item.href}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link
-                  href={item.href}
-                  className={cn(
-                    buttonVariants({ variant: "ghost", size: "icon" }),
-                    "size-12"
-                  )}
-                >
-                  <item.icon className="size-4" />
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{item.label}</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
-        ))}
-        <Separator orientation="vertical" className="h-full" />
-        {Object.entries(DATA.contact.social)
-          .filter(([_, social]) => social.navbar)
-          .map(([name, social]) => (
-            <DockIcon key={name}>
-              <Tooltip>
-                <TooltipTrigger asChild>
+    <header className="absolute top-0 inset-x-0 z-50 transition-all duration-300">
+      <div className="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between">
+        {/* Brand */}
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+          <div className="size-8 rounded-full overflow-hidden border border-white/10 group-hover:border-white/30 transition-colors">
+            <Image
+              src={DATA.avatarUrl}
+              alt={DATA.name}
+              width={32}
+              height={32}
+              className="object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+          </div>
+          <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground transition-colors font-sans">
+            {DATA.name.toLowerCase()}
+            <span className="text-accent text-xs ml-0.5 animate-pulse">•</span>
+          </span>
+        </Link>
+
+        {/* Actions & Social */}
+        <div className="flex items-center gap-4">
+          <nav className="hidden sm:flex items-center gap-6 text-[11px] uppercase tracking-[0.1em] text-muted-foreground/80 font-sans font-bold">
+            {DATA.navbar.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="hover:text-foreground transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-4 pl-4 border-l border-white/5">
+            <ModeToggle />
+            
+            <div className="flex items-center gap-3.5">
+              {Object.entries(DATA.contact.social)
+                .filter(([_, social]) => social.navbar)
+                .map(([name, social]) => (
                   <Link
+                    key={name}
                     href={social.url}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12"
-                    )}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted-foreground/70 hover:text-foreground transition-colors"
+                    title={name}
                   >
                     <social.icon className="size-4" />
                   </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{name}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
-        <Separator orientation="vertical" className="h-full py-2" />
-        <DockIcon>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <ModeToggle />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Theme</p>
-            </TooltipContent>
-          </Tooltip>
-        </DockIcon>
-      </Dock>
-    </div>
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }
