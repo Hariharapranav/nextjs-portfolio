@@ -1,6 +1,7 @@
 import React from "react";
 import BlurFade from "@/components/magicui/blur-fade";
 import { DATA } from "@/data/resume";
+import Link from "next/link";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -8,37 +9,43 @@ export function EducationSection() {
   return (
     <section id="education" className="py-8 border-t border-border/40">
       <BlurFade delay={BLUR_FADE_DELAY * 15}>
-        <div className="flex items-center justify-between mb-8">
-          <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted-foreground">
-            Education
-          </span>
-        </div>
+        <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted-foreground">
+          Education
+        </span>
       </BlurFade>
 
-      <div className="flex flex-col space-y-8">
-        {DATA.education.map((education, id) => (
+      <div className="flex flex-col gap-8 mt-8">
+        {DATA.education.map((edu, id) => (
           <BlurFade
-            key={education.school + education.degree}
+            key={edu.school + edu.degree}
             delay={BLUR_FADE_DELAY * 16 + id * 0.08}
           >
-            <div className="flex flex-col">
-              {/* Date row */}
-              <div className="flex items-center gap-2 mb-2">
+            <Link
+              href={edu.href || "#"}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3"
+            >
+              <div>
+                {/* Date */}
                 <span className="text-[10px] font-sans font-bold text-accent tracking-[0.1em] uppercase">
-                  {education.start} – {education.end}
+                  {edu.start} – {edu.end}
                 </span>
+
+                {/* School */}
+                <h3
+                  className="font-display font-light text-foreground group-hover:text-accent transition-colors mt-2"
+                  style={{ fontSize: "22px", lineHeight: "1.2", fontWeight: 300 }}
+                >
+                  {edu.school}
+                </h3>
+
+                {/* Degree */}
+                <p className="text-[11px] font-sans text-muted-foreground mt-1 uppercase tracking-wider">
+                  {edu.degree}
+                </p>
               </div>
-              {/* School — Fraunces */}
-              <h3
-                className="font-display font-light text-foreground"
-                style={{ fontSize: "24px", lineHeight: "1.2", fontWeight: 300 }}
-              >
-                {education.school}
-              </h3>
-              <p className="text-sm font-sans text-muted-foreground/80 mt-1 uppercase tracking-wider">
-                {education.degree}
-              </p>
-            </div>
+            </Link>
           </BlurFade>
         ))}
       </div>

@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 10%;
-    --card: 0 0% 98%;
-    --card-foreground: 240 10% 10%;
+    --background: 220 22% 98%;
+    --foreground: 222 50% 6%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 50% 6%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
-    --primary: 240 10% 10%;
+    --popover-foreground: 222 50% 6%;
+    --primary: 222 50% 6%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 10% 20%;
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 5% 35%;
-    --accent: 210 90% 50%;
-    --accent-foreground: 240 10% 10%;
+    --secondary: 220 16% 92%;
+    --secondary-foreground: 222 40% 14%;
+    --muted: 220 16% 92%;
+    --muted-foreground: 222 12% 42%;
+    --accent: 190 100% 35%;
+    --accent-foreground: 222 50% 6%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 240 10% 40%;
-    --radius: 0.375rem;
+    --border: 220 14% 87%;
+    --input: 220 14% 87%;
+    --ring: 190 100% 35%;
+    --radius: 0.875rem;
   }
 
   .dark {
-    --background: 240 28% 4%;
-    --foreground: 0 0% 100%;
-    --card: 240 20% 8%;
-    --card-foreground: 0 0% 100%;
-    --popover: 240 20% 8%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 240 28% 4%;
-    --secondary: 240 15% 12%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 240 15% 12%;
-    --muted-foreground: 0 0% 90%;
-    --accent: 210 100% 66%;
-    --accent-foreground: 0 0% 100%;
+    --background: 238 35% 3.3%;
+    --foreground: 210 22% 95%;
+    --card: 238 28% 5.5%;
+    --card-foreground: 210 22% 95%;
+    --popover: 238 28% 5.5%;
+    --popover-foreground: 210 22% 95%;
+    --primary: 210 22% 95%;
+    --primary-foreground: 238 35% 3.3%;
+    --secondary: 238 20% 9%;
+    --secondary-foreground: 210 15% 80%;
+    --muted: 238 20% 9%;
+    --muted-foreground: 238 10% 48%;
+    --accent: 189 100% 54%;
+    --accent-foreground: 238 35% 3.3%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 15% 12%;
-    --input: 240 15% 12%;
-    --ring: 210 100% 66%;
+    --border: 238 22% 11%;
+    --input: 238 22% 11%;
+    --ring: 189 100% 54%;
   }
 }
 
@@ -59,6 +59,29 @@
   }
 }
 
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent) / 0.55);
+}
+
+/* ─── Selection ─────────────────────────────────────── */
+::selection {
+  background-color: hsl(var(--accent) / 0.18);
+  color: hsl(var(--foreground));
+}
+
+/* ─── Code blocks ───────────────────────────────────── */
 h3 code {
   font-size: 1.125rem !important;
 }
@@ -81,7 +104,7 @@ code {
   @apply text-sm md:text-base !leading-loose;
 }
 
-pre>code {
+pre > code {
   counter-reset: line;
 }
 
@@ -92,7 +115,6 @@ code[data-theme*=" "] span {
 }
 
 @media (prefers-color-scheme: dark) {
-
   code[data-theme*=" "],
   code[data-theme*=" "] span {
     color: var(--shiki-dark);
@@ -104,7 +126,7 @@ code[data-line-numbers] {
   counter-reset: line;
 }
 
-code[data-line-numbers]>[data-line]::before {
+code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);
   @apply inline-block w-4 mr-4 text-right text-gray-500;
@@ -114,7 +136,7 @@ code {
   counter-reset: line;
 }
 
-code>[data-line]::before {
+code > [data-line]::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
@@ -124,10 +146,10 @@ code>[data-line]::before {
   color: gray;
 }
 
-code[data-line-numbers-max-digits="2"]>[data-line]::before {
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 2rem;
 }
 
-code[data-line-numbers-max-digits="3"]>[data-line]::before {
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
