@@ -49,7 +49,7 @@ export function WorkSection() {
                     <span className="text-[10px] font-sans text-muted-foreground uppercase tracking-wider">
                       {work.location}
                     </span>
-                    {work.badges?.includes("Current") && (
+                    {(work.badges as readonly string[])?.includes("Current") && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[9px] font-sans font-bold uppercase tracking-widest">
                         <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
                         Now
