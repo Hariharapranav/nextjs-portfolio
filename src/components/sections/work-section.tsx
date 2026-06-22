@@ -22,7 +22,7 @@ export function WorkSection() {
       {/* Entries — styled like "Recent Stories" in reference */}
       <div className="flex flex-col space-y-8">
         {DATA.work.map((work, id) => (
-          <BlurFade key={work.company} delay={BLUR_FADE_DELAY * 6 + id * 0.05}>
+          <BlurFade key={work.title} delay={BLUR_FADE_DELAY * 6 + id * 0.05}>
             <Link
               href={work.href || "#"}
               target="_blank"

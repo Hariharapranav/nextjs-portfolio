@@ -25,11 +25,11 @@ export function HeroSection() {
         {/* Tight Summary — Small */}
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <p className="text-sm sm:text-base text-foreground font-sans leading-relaxed max-w-xl font-normal">
-            Java Full Stack Developer with a CS degree from{" "}
-            <span className="font-medium text-foreground hover:underline decoration-border underline-offset-4 text-xs tracking-wide">
-              Bannari Amman Institute of Technology (&apos;23)
-            </span>
-            . I build end-to-end systems with <span className="text-accent underline decoration-accent/30 underline-offset-4">Spring Boot 3</span> and <span className="text-accent underline decoration-accent/30 underline-offset-4">React/Next.js</span> — from workflow engines and Kafka pipelines to real-time dashboards. Clean code, secure by default, built to scale.
+            Full Stack Developer with nearly 2 years delivering production-grade web and mobile apps — from database schema design to cloud deployment. I build with{" "}
+            <span className="text-accent underline decoration-accent/30 underline-offset-4">Python & FastAPI</span>,{" "}
+            <span className="text-accent underline decoration-accent/30 underline-offset-4">React.js & Flutter</span>, and{" "}
+            <span className="text-accent underline decoration-accent/30 underline-offset-4">AWS</span>{" "}
+            — scalable REST APIs, event-driven pipelines, and mobile apps with payment integration. End-to-end ownership is where I thrive.
           </p>
         </BlurFade>
       </div>
